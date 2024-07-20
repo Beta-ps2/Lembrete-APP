@@ -10,4 +10,4 @@ O <a href="#">link do código</a> funcionando no youtube.
 
 OBS: Só para relembrar, caso queira baixar os arquivos brutos, o Service Worker só funciona através do localhost ou http, caso contrário, o console do navegador revela um erro de violação na política CORS. De qualquer forma, entrar pelo GithubPages é uma das formas de resolver o problema.
 
-OBS 3: Em 2024, o Opera não tem suporte para PWA. Mas funciona normal no Edge ou Chrome para desktop. Caso não apareça notificação no Chrome mobile, é só seguir os passos: Três pontos (canto superior direito) > Adicionar à tela inicial > instalar.
+OBS 2: Em 2024, o Opera não tem suporte para PWA. Mas funciona normal no Edge ou Chrome para desktop. Caso não apareça notificação no Chrome mobile, é só seguir os passos: Três pontos (canto superior direito) > Adicionar à tela inicial > instalar.
