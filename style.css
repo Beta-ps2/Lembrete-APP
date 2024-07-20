@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+
+h1, h2 {
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    background-color: #080808;
+}
+
+.add-reminder-container {
+    display: grid;
+    place-items: center;
+    margin: auto;
+    width: 22em;
+}
+
+.input {
+    width: 20em;
+    height: 2em;
+    border-radius: 4px;
+    margin: 2px;
+    padding-left: 2px;
+    background-color: #e5e5e5;
+}
+
+.container-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+ 
+li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 8px;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #4F4CC1;
+}
+
+.btns-div {
+    margin: 5px;
+    width: 17em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 9px;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #4F4CC1;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.delete-btn {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #6E75C8;
+    cursor: pointer;
+    font-weight: 800;
+}

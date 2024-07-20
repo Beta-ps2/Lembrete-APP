@@ -1,0 +1,29 @@
+{
+  "name": "Lembrete",
+  "description": "Anote seus compromissos e não esqueça de datas e/ou locais importantes que você precisa ir.",
+  "icons": [
+    {
+      "src": "imgs/sino-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "imgs/sino-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "imgs/sino-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#4F4CC1",
+  "background_color": "#080808"
+}

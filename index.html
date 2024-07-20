@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imgs/sino-48.ico" type="image/png">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Lembretes</title>
+</head>
+<body>
+    <header>
+        <h1>Todos</h1>
+    </header>
+
+    <main>
+        <div class="add-reminder-container">
+
+            <input id="task" type="text" class="input"placeholder="Lembrete" autocomplete="no" required>
+
+            <input id="date" type="date" class="input" required>
+
+            <input id="local" type="text" class="input" placeholder="Local">
+
+            <select id="category" class="input">
+                <option value="lembretes">Meus lembretes</option>
+                <option value="urgente">Urgente</option>
+            </select>
+
+            <div class="btns-div">
+                <button id="clear-fields-btn" class="btn">Limpar</button>
+                <button id="add-btn" class="btn">Salvar</button>
+            </div>
+
+        </div>
+
+        <div >
+
+            <h2>Lembretes</h2>
+
+            <div class="container-list">
+
+                <ul id="reminder-list">
+
+                </ul>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
