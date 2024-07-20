@@ -7,9 +7,10 @@ self.addEventListener('install', (e) => {
                 'style.css',
                 'app.js',
                 'manifest.json',
-                '192x192.png',
-                '144x144.png',
-                '512x512.png'
+                'imgs/sino-48.ico',
+                'imgs/sino-144.png',
+                'imgs/sino-192.png',
+                'imgs/sino-512.png'
             ]);
         })
     );
