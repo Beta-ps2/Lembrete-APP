@@ -39,6 +39,9 @@ body {
     color: #e0e0e0;
 }
 
+select option {
+    background-color: #323232;
+}
 
 .container-list{
     display: flex;
@@ -69,10 +72,6 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-select option {
-    background-color: #323232;
 }
 
 .btn {
