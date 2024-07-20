@@ -1,14 +1,13 @@
 // IMPLEMENTAR O SERVICE WORKER
-// if ('serviceWorker' in navigator) {
-//     window.addEventListener('load', () => {
-//         navigator.serviceWorker.register('sw.js').then((registration) => {
-//             console.log('Service Worker registrado com sucesso: ', registration.scope);
-//         }, (err) => {
-//             console.log('Registro do Service Worker falhou: ', err);
-//         });
-//     });
-// }
-
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').then((registration) => {
+            console.log('Service Worker registrado com sucesso: ', registration.scope);
+        }, (err) => {
+            console.log('Registro do Service Worker falhou: ', err);
+        });
+    });
+}
 
 // BOTÃO PARA LIMPAR O CAMPOS 
 const clear_btn = document.getElementById('clear-fields-btn');
