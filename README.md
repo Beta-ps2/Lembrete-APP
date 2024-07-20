@@ -6,7 +6,7 @@ O que ele faz? O app pega seus lembretes e armazena no localstorage, sendo poss�
 1. A data de algum lembrete coincidir com a de hoje;
 2. A coordenada previamente inserida coincidir com a coordenada atual.
 
-O <a href="#">link do código</a> funcionando no youtube.
+O <a href="https://youtu.be/xV1HGGY1yt4">link do código</a> funcionando no youtube.
 
 OBS: Só para relembrar, caso queira baixar os arquivos brutos, o Service Worker só funciona através do localhost ou http, caso contrário, o console do navegador revela um erro de violação na política CORS. De qualquer forma, entrar pelo GithubPages é uma das formas de resolver o problema.
 
