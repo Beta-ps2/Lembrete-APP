@@ -9,16 +9,6 @@
 //     });
 // }
 
-// PERMISSÃO PARA NOTIFICAÇÃO
-if ("Notification" in window) {
-    Notification.requestPermission().then(function(permission) {
-      if (permission === "granted") {
-        console.log("Permissão para notificações foi concedida.");
-      } else {
-        console.log("Permissão para notificações foi negada pelo usuário.");
-      }
-    });
-}
 
 // BOTÃO PARA LIMPAR O CAMPOS 
 const clear_btn = document.getElementById('clear-fields-btn');
@@ -71,7 +61,10 @@ add_btn.addEventListener("click", () => {
     document.getElementById('lat').value = '';
     document.getElementById('long').value = '';
 
+    
     loadReminders();
+    checkAndNotifyTodayReminders();
+    getCurrentCoordinates();
 });
 
 // FUNÇÃO AUXILIAR PARA OBTER LEMBRETES DO LOCALSTORAGE
@@ -87,7 +80,10 @@ function addReminder(task, date, category, latitude, longitude) {
     reminders.push(newReminder);
     localStorage.setItem('reminders', JSON.stringify(reminders));
 
+
     loadReminders()
+    checkAndNotifyTodayReminders();
+    getCurrentCoordinates();
 }
 
 // FUNÇÃO PARA ALTERAR UM LEMBRETE EXISTENTE
@@ -136,49 +132,86 @@ function loadReminders() {
     });
 }
 
-add_btn.addEventListener('click', function() {
-    if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-        console.log('Geolocalização não é suportada pelo seu navegador.');
-    }
-});
-
-function success(position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    console.log(latitude, longitude);
+// PERMISSÃO PARA NOTIFICAÇÃO
+if ("Notification" in window) {
+    Notification.requestPermission().then(function(permission) {
+      if (permission === "granted") {
+        console.log("Permissão para notificações foi concedida.");
+      } else {
+        console.log("Permissão para notificações foi negada pelo usuário.");
+      }
+    });
 }
 
-function error() {
-    console.log('Não foi possível obter a localização.');
-}
-
+// FUNÇÃO PARA VERIFICAR SE TEM LEMBRETE PRA HOJE
 function checkAndNotifyTodayReminders() {
     // Obter a data de hoje no formato "YYYY-MM-DD"
     const today = new Date().toISOString().split('T')[0];
+    console.log(today)
 
     // Buscar lembretes do localStorage
     const reminders = getRemindersFromLocalStorage();
-
-    // Exemplo de log para verificar se a função está sendo chamada corretamente
     console.log('Verificando lembretes para hoje...');
 
     // Iterar sobre os lembretes e verificar se a data é igual a hoje
     reminders.forEach((reminder) => {
         if (reminder.date === today) {
-            // Caso encontrar um lembrete com a data igual à de hoje
-            const notificationMessage = `Lembrete para hoje: ${reminder.task}`;
-
-            console.log(reminder.task);
-
-            alert(notificationMessage);
+            // Caso encontrar um lembrete com data igual à de hoje, manda notificação
+            let notification = new Notification("Lembrete!", {
+                body: `Compromisso de hoje: ${reminder.task}`,
+                icon: "imgs/sino-48.ico",
+            });
         }
     });
 }
 
 
-checkAndNotifyTodayReminders();
+function getCurrentCoordinates() {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
 
-// CHAMA A FUNÇÃO PARA CARREGAR OS LEMBRETES AO CARREGAR A PÁGINA
-document.addEventListener('DOMContentLoaded', loadReminders);
+            const latitudeNumber = position.coords.latitude;
+            const longitudeNumber = position.coords.longitude;
+            console.log('Latitude:', latitudeNumber, 'Longitude:', longitudeNumber);
+
+            // DEVOLVER EM FORMA DE STRING
+            latitude = latitudeNumber.toString();
+            longitude = longitudeNumber.toString();
+
+            // CHAMA FUNÇÃO PARA VERIFICAR LEMBRETE BASEADO EM LOCALIZAÇÃO
+            checkAndNotifyBasedOnLocation(latitude, longitude);
+
+        }, function(error) {
+
+            console.log('Não foi possível obter a localização:', error.message);
+
+        });
+
+    } else {
+        console.log('Geolocalização não é suportada pelo seu navegador.');
+    }
+}
+
+function checkAndNotifyBasedOnLocation(latitude, longitude) {
+
+    // Buscar lembretes do localStorage
+    const reminders = getRemindersFromLocalStorage();
+    console.log('Verificando lembretes para a localização...');
+
+    reminders.forEach((reminder) => {
+        if (reminder.latitude === latitude && reminder.longitude === longitude) {
+            // Caso encontrar um lembrete com a mesma localização, envia notificação
+            let notification = new Notification("Lembrete!", {
+                body: `Compromisso no local: ${reminder.latitude}, ${reminder.longitude}`,
+                icon: "imgs/sino-48.ico",
+            });
+        }
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadReminders();
+    checkAndNotifyTodayReminders();
+    getCurrentCoordinates();
+});
